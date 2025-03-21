@@ -115,13 +115,14 @@ function App() {
   }, []);
 
   const handleNoButtonHover = () => {
-    const x = Math.random() * (window.innerWidth - 200);
-    const y = Math.random() * (window.innerHeight - 250);
+    const x = Math.random() * (window.innerWidth - 100);
+    const y = Math.random() * (window.innerHeight - 100);
     setNoButtonStyle({
       ...noButtonStyle,
       position: "absolute",
       left: `${x}px`,
       top: `${y}px`,
+      transition: "all 0.1s ease",
     });
     // setYesButtonScale(1.5);
   };
@@ -280,8 +281,8 @@ function App() {
         <div className="flex flex-row gap-4 mt-8 w-full justify-center">
           <button
             className={`bg-gradient-to-r ${themes[currentTheme].secondary} 
-              text-white px-16 py-3 rounded-full hover:scale-105 
-              transition-all duration-300 font-semibold group relative text-[30px] w-auto `}
+              text-white px-8 sm:px-16 py-2 sm:py-3 rounded-full hover:scale-105 
+              transition-all duration-300 font-semibold group relative text-[20px] sm:text-[30px] w-auto `}
             id="yesButton"
             onClick={handleYesButtonClick}
             // style={{ transform: `scale(${yesButtonScale})` }}
@@ -293,8 +294,9 @@ function App() {
             <button
               id="noButton"
               className={`bg-gradient-to-r ${themes[currentTheme].secondary} 
-                text-white  px-16 py-3 rounded-full hover:scale-105 
-                transition-all duration-300 font-semibold group relative text-[30px]  w-auto `}
+                text-white px-8 sm:px-16 py-2 sm:py-3 rounded-full hover:scale-105 
+                transition-all duration-300 font-semibold group relative 
+                text-[20px] sm:text-[30px] w-auto`}
               style={noButtonStyle}
               onMouseOver={handleNoButtonHover}
               onMouseLeave={handleNoButtonLeave}
