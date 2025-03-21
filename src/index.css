@@ -1,0 +1,138 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* styles.css */
+body {
+  overflow-y: hidden; /* Disable vertical scrollbar */
+  overflow-x: hidden;
+  /* Enhanced romantic gradient with soft pinks and rose gold */
+  background: linear-gradient(45deg, 
+    #ffe6e6,
+    #ffd1dc, /* Classic rose pink */
+    #ffb6c1, /* Light pink */
+    #ffc0cb, /* Pink */
+    #dda0dd /* Plum */
+  );
+  background-size: 400% 400%;
+  animation: gradientBG 15s ease infinite;
+}
+
+@keyframes gradientBG {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Optionally, you can re-enable overflow-y for specific elements if necessary */
+#root {
+  overflow-y: auto; /* Re-enable overflow-y for the root element */
+}
+
+.heart {
+  position: absolute;
+  top: -50%;
+  transform: rotate(-45deg) scale(0);
+  animation: love var(--time, 5s) ease, pulse 1s ease-in-out infinite;
+  /* Enhanced glow effect */
+  filter: drop-shadow(0 0 15px rgba(255, 182, 193, 0.7));
+  opacity: 0.9;
+}
+
+.heart:before,
+.heart:after {
+  position: absolute;
+  content: "";
+  width: 100%;
+  height: 100%;
+  background: inherit;
+  border-radius: 100%;
+  /* Enhanced heart glow */
+  box-shadow: 0 0 20px rgba(255, 105, 180, 0.5);
+}
+
+.heart:before {
+  top: -50%;
+  left: 0;
+}
+
+.heart:after {
+  top: 0;
+  right: -50%;
+}
+
+@keyframes love {
+  0% {
+    top: 110%;
+    transform: rotate(-45deg) scale(0);
+  }
+  50% {
+    transform: rotate(-45deg) scale(1.2);
+  }
+  100% {
+    top: -50%;
+    transform: rotate(-45deg) scale(1);
+  }
+}
+
+@keyframes pulse {
+  0% {
+    transform: rotate(-45deg) scale(1);
+  }
+  50% {
+    transform: rotate(-45deg) scale(1.1);
+  }
+  100% {
+    transform: rotate(-45deg) scale(1);
+  }
+}
+
+/* Add sparkle effect */
+.sparkle {
+  position: fixed;
+  pointer-events: none;
+  width: 4px;
+  height: 4px;
+  background: white;
+  border-radius: 50%;
+  animation: sparkle 1.5s linear infinite;
+}
+
+@keyframes sparkle {
+  0% {
+    opacity: 0;
+    transform: scale(0);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0);
+  }
+}
+
+/* New: Adding floating rose petals */
+.petal {
+  position: fixed;
+  pointer-events: none;
+  width: 15px;
+  height: 15px;
+  background: rgba(255, 182, 193, 0.7);
+  border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+  animation: floating 10s linear infinite;
+}
+
+@keyframes floating {
+  0% {
+    top: -10%;
+    left: random(100%);
+    transform: rotate(0deg);
+  }
+  100% {
+    top: 110%;
+    left: random(100%);
+    transform: rotate(360deg);
+  }
+}
